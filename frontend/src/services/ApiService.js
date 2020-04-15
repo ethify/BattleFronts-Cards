@@ -1,38 +1,49 @@
-import { Api, JsonRpc } from 'eosjs';
-import { JsSignatureProvider } from 'eosjs/dist/eosjs-jssig'
-import { startGame, playCard, userGame, nextRound, endGame } from './GameLogic'
+import { Api, JsonRpc } from "eosjs";
+import { JsSignatureProvider } from "eosjs/dist/eosjs-jssig";
+import { startGame, playCard, userGame, nextRound, endGame } from "./GameLogic";
 
 // Main action call to blockchain
 async function takeAction(action, dataValue) {
   const privateKey = localStorage.getItem("cardgame_key");
   const rpc = new JsonRpc(process.env.REACT_APP_EOS_HTTP_ENDPOINT);
   const signatureProvider = new JsSignatureProvider([privateKey]);
-  const api = new Api({ rpc, signatureProvider, textDecoder: new TextDecoder(), textEncoder: new TextEncoder() });
+  const api = new Api({
+    rpc,
+    signatureProvider,
+    textDecoder: new TextDecoder(),
+    textEncoder: new TextEncoder(),
+  });
 
   // Main call to blockchain after setting action, account_name and data
   try {
-    const resultWithConfig = await api.transact({
-      actions: [{
-        account: process.env.REACT_APP_EOS_CONTRACT_NAME,
-        name: action,
-        authorization: [{
-          actor: localStorage.getItem("cardgame_account"),
-          permission: 'active',
-        }],
-        data: dataValue,
-      }]
-    }, {
-      blocksBehind: 3,
-      expireSeconds: 30,
-    });
+    const resultWithConfig = await api.transact(
+      {
+        actions: [
+          {
+            account: process.env.REACT_APP_EOS_CONTRACT_NAME,
+            name: action,
+            authorization: [
+              {
+                actor: localStorage.getItem("cardgame_account"),
+                permission: "active",
+              },
+            ],
+            data: dataValue,
+          },
+        ],
+      },
+      {
+        blocksBehind: 3,
+        expireSeconds: 30,
+      }
+    );
     return resultWithConfig;
   } catch (err) {
-    throw(err)
+    throw err;
   }
 }
 
 class ApiService {
-
   static getCurrentUser() {
     return new Promise((resolve, reject) => {
       // if (!localStorage.getItem("cardgame_account")) {
@@ -53,50 +64,50 @@ class ApiService {
 
   static login({ username, key }) {
     return new Promise((resolve, reject) => {
-    //   localStorage.setItem("cardgame_account", username);
-    //   localStorage.setItem("cardgame_key", key);
-    //   takeAction("login", { username: username })
-    //     .then(() => {
-    //       resolve();
-    //     })
-    //     .catch(err => {
-    //       localStorage.removeItem("cardgame_account");
-    //       localStorage.removeItem("cardgame_key");
-    //       reject(err);
-    //     });
-    
-    localStorage.setItem("cardgame_account",'manank')
-    localStorage.setItem("cardgame_key",'manank')
+      //   localStorage.setItem("cardgame_account", username);
+      //   localStorage.setItem("cardgame_key", key);
+      //   takeAction("login", { username: username })
+      //     .then(() => {
+      //       resolve();
+      //     })
+      //     .catch(err => {
+      //       localStorage.removeItem("cardgame_account");
+      //       localStorage.removeItem("cardgame_key");
+      //       reject(err);
+      //     });
 
-  });
+      localStorage.setItem("cardgame_account", "manank");
+      localStorage.setItem("cardgame_key", "manank");
+      resolve();
+    });
   }
 
   static startGame() {
-    return new Promise((resolve,reject)=>{
-      startGame()
-      resolve()
-    })
+    return new Promise((resolve, reject) => {
+      startGame();
+      resolve();
+    });
   }
 
   static playCard(cardIdx) {
-    return new Promise((resolve,reject)=>{
-      playCard(cardIdx)
-      resolve()
-    })
+    return new Promise((resolve, reject) => {
+      playCard(cardIdx);
+      resolve();
+    });
   }
 
   static nextRound() {
-    return new Promise((resolve,reject)=>{
-      nextRound()
-      resolve()
-    })
+    return new Promise((resolve, reject) => {
+      nextRound();
+      resolve();
+    });
   }
 
   static endGame() {
-    return new Promise((resolve,reject)=>{
-      endGame()
-      resolve()
-    })
+    return new Promise((resolve, reject) => {
+      endGame();
+      resolve();
+    });
   }
 
   static async getUserByName(username) {
@@ -114,9 +125,8 @@ class ApiService {
     // } catch (err) {
     //   console.error(err);
     // }
-    return userGame
+    return userGame;
   }
-
 }
 
 export default ApiService;

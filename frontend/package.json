@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "eosjs": "20.0.3",
+    "lodash": "^4.17.15",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-modal": "^3.11.1",
