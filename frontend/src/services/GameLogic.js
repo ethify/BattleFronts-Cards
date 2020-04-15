@@ -193,5 +193,5 @@ export const nextRound = () => {
 }
 
 export const endGame = () => {
-    userGame = initailUserGame
+    userGame.game_data = initailUserGame.game_data
 }
