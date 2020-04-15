@@ -80,7 +80,7 @@ class Login extends Component {
 
     return (
       <div className="Login">
-        <div className="title">Elemental Battles - powered by EOSIO</div>
+        <div className="title">Elemental Battles - Made By Ethify Labs</div>
         <div className="description">Please use the Account Name and Private Key generated in the previous page to log into the game.</div>
         <form name="form" onSubmit={ this.handleSubmit }>
           <div className="field">

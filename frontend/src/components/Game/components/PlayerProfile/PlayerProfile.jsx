@@ -12,7 +12,7 @@ class PlayerProfile extends Component {
     //         number of winning and losing
     return (
       <div className="PlayerProfile">
-        <div className="title">Elemental Battles - powered by EOSIO</div>
+        <div className="title">Elemental Battles - made by Ethify Labs</div>
         <div className="welcome">
           <span>Welcome</span>
         </div>

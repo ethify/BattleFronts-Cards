@@ -28,11 +28,15 @@ class Game extends Component {
 
   // Get latest user object from blockchain
   loadUser() {
+    console.log('starting to load user');
+    
     // Extract `setUser` of `UserAction` and `user.name` of UserReducer from redux
     const { setUser, user: { name } } = this.props;
     // Send request the blockchain by calling the ApiService,
     // Get the user object and store the `win_count`, `lost_count` and `game_data` object
     return ApiService.getUserByName(name).then(user => {
+      console.log('user is ',user);
+      
       setUser({
         win_count: user.win_count,
         lost_count: user.lost_count,
@@ -44,9 +48,13 @@ class Game extends Component {
   }
 
   handleStartGame() {
+    console.log('handleSStartgame started');
+    
     // Send a request to API (blockchain) to start game
     // And call `loadUser` again for react to render latest game status to UI
     return ApiService.startGame().then(()=>{
+      console.log('going to load user');
+      
       return this.loadUser();
     });
   }
