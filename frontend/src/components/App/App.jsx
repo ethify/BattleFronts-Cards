@@ -7,6 +7,7 @@ import { Game, Login } from "components";
 import { UserAction } from "actions";
 import { ApiService } from "services";
 import Dashboard from "../Dashboard";
+import Staking from "../Staking";
 
 class App extends Component {
   constructor(props) {
@@ -48,9 +49,10 @@ class App extends Component {
     // Extract data from state and props (`user` is from redux)
     const { loading } = this.state;
     const {
-      user: { name, game },
+      user: { name, game, staking_done },
     } = this.props;
 
+    console.log(staking_done, name, game);
     // Determine the app status for styling
     let appStatus = "login";
     if (game && game.status !== 0) {
@@ -68,9 +70,10 @@ class App extends Component {
     // If the username is NOT set in redux, display the Login component
     return (
       <div className={`App status-${appStatus}${loading ? " loading" : ""}`}>
-        {/* { name && <Game /> }
-        { !name && <Login /> } */}
-        <Dashboard />
+        {name && staking_done && <Game />}
+        {name && !staking_done && <Staking />}
+        {!name && <Login />}
+        {/* <Dashboard /> */}
       </div>
     );
   }

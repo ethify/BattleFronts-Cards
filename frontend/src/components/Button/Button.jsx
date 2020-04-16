@@ -1,7 +1,6 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
 class Button extends Component {
-
   constructor(props) {
     // Inherit constructor
     super(props);
@@ -48,13 +47,16 @@ class Button extends Component {
     loading = loading || this.props.loading;
     return (
       <button
-        className={`Button${ className ? ' ' + className : '' }${ loading ? ' loading' : '' }`}
-        onClick={ this.handleClick }
-        { ...{ type, style } }
-      >{ children }</button>
+        className={`Button${className ? " " + className : ""}${
+          loading ? " loading" : ""
+        }`}
+        onClick={this.handleClick}
+        {...{ type, style }}
+      >
+        {children}
+      </button>
     );
   }
-
 }
 
 export default Button;
