@@ -6,6 +6,8 @@ import { Button } from 'components';
 import { UserAction } from 'actions';
 import { ApiService } from 'services';
 
+import {getAccount} from '../../services/conditionalTokens/Web3Service';
+
 class Login extends Component {
 
   constructor(props) {
@@ -19,6 +21,7 @@ class Login extends Component {
         error: '',
       },
       isSigningIn: false,
+      account: ''
     }
     // Bind functions
     this.handleChange = this.handleChange.bind(this);
@@ -48,7 +51,9 @@ class Login extends Component {
   }
 
   // Handle form submission to call api
-  handleSubmit(event) {
+  async handleSubmit(event) {
+    const account = await getAccount()
+    this.setState({account:account})
     // Stop the default form submit browser behaviour
     event.preventDefault();
     // Extract `form` state

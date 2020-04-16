@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@truffle/contract": "^4.2.0",
+    "bignumber.js": "^9.0.0",
     "eosjs": "20.0.3",
     "lodash": "^4.17.15",
     "react": "^16.12.0",
