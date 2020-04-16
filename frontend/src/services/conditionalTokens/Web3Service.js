@@ -1,7 +1,7 @@
 import ConditionalTokens from '../../contracts/build/ConditionalTokens.json'
 import LMSRMarketMaker from '../../contracts/build/LMSRMarketMaker.json'
 import WETH9 from '../../contracts/build/WETH9.json'
-import { Web3 } from 'web3';
+import { default as Web3 } from 'web3';
 
 
 const TruffleContract = require('@truffle/contract')
@@ -11,6 +11,8 @@ let lmsrAddressCache;
 let providerAccountCache;
 
 export const getAccount = async () => {
+    console.log('Started acoutn');
+    
     let account = null;
     try {
       if (
