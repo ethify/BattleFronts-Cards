@@ -1,25 +1,24 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React, { Component } from "react";
+import { connect } from "react-redux";
 // Components
-import { Button } from 'components';
+import { Button } from "components";
 // Services and redux action
-import { UserAction } from 'actions';
-import { ApiService } from 'services';
+import { UserAction } from "actions";
+import { ApiService } from "services";
 
 class Login extends Component {
-
   constructor(props) {
     // Inherit constructor
     super(props);
     // State for form data and error message
     this.state = {
       form: {
-        username: '',
-        key: '',
-        error: '',
+        username: "",
+        key: "",
+        error: "",
       },
       isSigningIn: false,
-    }
+    };
     // Bind functions
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -34,7 +33,7 @@ class Login extends Component {
       form: {
         ...form,
         [name]: value,
-        error: '',
+        error: "",
       },
     });
   }
@@ -64,7 +63,7 @@ class Login extends Component {
       .then(() => {
         setUser({ name: form.username });
       })
-      .catch(err => {
+      .catch((err) => {
         this.setState({ error: err.toString() });
       })
       .finally(() => {
@@ -81,16 +80,19 @@ class Login extends Component {
     return (
       <div className="Login">
         <div className="title">Elemental Battles - Made By Ethify Labs</div>
-        <div className="description">Please use the Account Name and Private Key generated in the previous page to log into the game.</div>
-        <form name="form" onSubmit={ this.handleSubmit }>
+        <div className="description">
+          Please use the Account Name and Private Key generated in the previous
+          page to log into the game.
+        </div>
+        <form name="form" onSubmit={this.handleSubmit}>
           <div className="field">
             <label>Account name</label>
             <input
               type="text"
               name="username"
-              value={ form.username }
+              value={form.username}
               placeholder="All small letters, a-z, 1-5 or dot, max 12 characters"
-              onChange={ this.handleChange }
+              onChange={this.handleChange}
               pattern="[\.a-z1-5]{2,12}"
               required
               autoComplete="off"
@@ -101,29 +103,29 @@ class Login extends Component {
             <input
               type="password"
               name="key"
-              value={ form.key }
-              onChange={ this.handleChange }
+              value={form.key}
+              onChange={this.handleChange}
               pattern="^.{51,}$"
               required
               autoComplete="new-password"
             />
           </div>
           <div className="field form-error">
-            { error && <span className="error">{ error }</span> }
+            {error && <span className="error">{error}</span>}
           </div>
           <div className="bottom">
-            <Button type="submit" className="green" loading={ isSigningIn }>
-              { "CONFIRM" }
+            <Button type="submit" className="green" loading={isSigningIn}>
+              {"CONFIRM"}
             </Button>
           </div>
         </form>
       </div>
-    )
+    );
   }
 }
 
 // Map all state to component props (for redux to connect)
-const mapStateToProps = state => state;
+const mapStateToProps = (state) => state;
 
 // Map the following action to props
 const mapDispatchToProps = {
