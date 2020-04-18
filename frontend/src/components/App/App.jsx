@@ -7,7 +7,6 @@ import { Game, Login } from "components";
 import { UserAction } from "actions";
 import { ApiService } from "services";
 import Dashboard from "../Dashboard";
-import Staking from "../Staking";
 
 class App extends Component {
   constructor(props) {
@@ -70,8 +69,7 @@ class App extends Component {
     // If the username is NOT set in redux, display the Login component
     return (
       <div className={`App status-${appStatus}${loading ? " loading" : ""}`}>
-        {name && staking_done && <Game />}
-        {name && !staking_done && <Staking />}
+        {name && <Game />}
         {!name && <Login />}
         {/* <Dashboard /> */}
       </div>
