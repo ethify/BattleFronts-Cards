@@ -1,0 +1,21 @@
+{
+  "networkId": 1587225776452,
+  "lmsrAddress": "0x01Da9ec913F82a784ba03eC61CdBCf8877Add8cE",
+  "markets": [
+    {
+      "questionId": "0x4b22fe478b95fdaa835ddddf631ab29f12900b62061e0c5fd8564ddb7b684333",
+      "title": "Who Will win the Match",
+      "outcomes": [
+        {
+          "title": "Player 1",
+          "short": "One"
+        },
+        {
+          "title": "Player 2",
+          "short": "Two"
+        }
+      ]
+    }
+  ],
+  "network": "local"
+}

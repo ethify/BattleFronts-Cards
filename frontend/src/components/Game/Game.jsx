@@ -109,6 +109,10 @@ class Game extends Component {
 
     // If game hasn't started, display `PlayerProfile`
     // If game has started, display `GameMat`, `Resolution`, `Info` screen
+    console.log('isgamestartetd', isGameStarted);
+    console.log('staking', staking_done);
+    
+    
     return (
       <section className={`Game${loading ? " loading" : ""}`}>
         {!isGameStarted ? (
