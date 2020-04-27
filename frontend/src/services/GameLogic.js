@@ -47,6 +47,7 @@ export var userGame = {
 };
 
 export const startGame = () => {
+  console.log("check 1", userGame);
   for (var i = 0; i < 4; i++) {
     const newUserCards = drawOneCard(
       userGame.game_data.deck_player,
@@ -63,6 +64,7 @@ export const startGame = () => {
     userGame.game_data.deck_ai = newAICards.deck;
     userGame.game_data.hand_ai = newAICards.hand;
   }
+  console.log("check 2", userGame);
 };
 
 export const drawOneCard = (deck, hand) => {
@@ -211,5 +213,6 @@ export const nextRound = () => {
 };
 
 export const endGame = () => {
+  console.log(_.cloneDeep(userGame.game_data));
   userGame.game_data = _.cloneDeep(initailUserGame.game_data);
 };
