@@ -105,14 +105,14 @@ class Game extends Component {
 
     // Flag to indicate if the game has started or not
     // By checking if the deckCard of AI is still 17 (max card)
+    console.log(name, win_count, lost_count, game);
     const isGameStarted = game && game.deck_ai.length !== 17;
 
     // If game hasn't started, display `PlayerProfile`
     // If game has started, display `GameMat`, `Resolution`, `Info` screen
-    console.log('isgamestartetd', isGameStarted);
-    console.log('staking', staking_done);
-    
-    
+    console.log("isgamestartetd", isGameStarted);
+    console.log("staking", staking_done);
+
     return (
       <section className={`Game${loading ? " loading" : ""}`}>
         {!isGameStarted ? (
