@@ -5,7 +5,10 @@ import { Button } from "components";
 // Services and redux action
 import { UserAction } from "actions";
 
-import { getAccount, buyToken } from "../../services/conditionalTokens/Web3Service";
+import {
+  getAccount,
+  buyToken,
+} from "../../services/conditionalTokens/Web3Service";
 
 const markets = require("../../services/conditionalTokens/config.local.json");
 
@@ -31,14 +34,13 @@ class Staking extends Component {
   };
 
   handleBuyToken = async () => {
-
-    await buyToken(this.state.account, this.state.amount)
+    await buyToken(this.state.account, this.state.amount);
 
     const { setUser } = this.props;
     console.log(setUser);
 
     setUser({ staking_done: true });
-  }
+  };
 
   async componentDidMount() {
     console.log(process.env);

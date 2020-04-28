@@ -1,6 +1,8 @@
 import { game_status, card_dict, card, game } from "../config";
 import * as _ from "lodash";
 
+import { endGameStakes } from '../services/conditionalTokens/Web3Service';
+
 const EMPTY = 0;
 const FIRE = 1;
 const WOOD = 2;
@@ -212,7 +214,12 @@ export const nextRound = () => {
   }
 };
 
-export const endGame = () => {
-  console.log(_.cloneDeep(userGame.game_data));
+export const endGame = async (account) => {
+
+  if (userGame.life_player > userGame.life_ai) {
+    await endGameStakes(0, account)
+  } else {
+    await endGameStakes(1, account)
+  }
   userGame.game_data = _.cloneDeep(initailUserGame.game_data);
 };

@@ -4,12 +4,12 @@ module.exports = [
     title: "Who Will win the Match",
     outcomes: [
       {
-        title: "Player 1",
-        short: "One"
-      },
-      {
         title: "Player 2",
         short: "Two"
+      },
+      {
+        title: "Player 1",
+        short: "One"
       }
     ]
   }

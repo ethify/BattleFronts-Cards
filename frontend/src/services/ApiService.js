@@ -1,6 +1,7 @@
 import { Api, JsonRpc } from "eosjs";
 import { JsSignatureProvider } from "eosjs/dist/eosjs-jssig";
 import { startGame, playCard, userGame, nextRound, endGame } from "./GameLogic";
+import { getAccount } from '../services/conditionalTokens/Web3Service'
 
 // Main action call to blockchain
 async function takeAction(action, dataValue) {
@@ -103,9 +104,10 @@ class ApiService {
     });
   }
 
-  static endGame() {
-    return new Promise((resolve, reject) => {
-      endGame();
+  static async endGame() {
+    const accounts = await getAccount()
+    return new Promise(async (resolve, reject) => {
+      endGame(accounts[0]);
       resolve();
     });
   }
