@@ -35,7 +35,6 @@ class Game extends Component {
       setUser,
       user: { name },
     } = this.props;
-    // Send request the blockchain by calling the ApiService,
     // Get the user object and store the `win_count`, `lost_count` and `game_data` object
     return ApiService.getUserByName(name).then((user) => {
       console.log("user is ", user);
@@ -53,7 +52,6 @@ class Game extends Component {
   handleStartGame() {
     console.log("handleSStartgame started");
 
-    // Send a request to API (blockchain) to start game
     // And call `loadUser` again for react to render latest game status to UI
     return ApiService.startGame().then(() => {
       console.log("going to load user");
@@ -73,7 +71,6 @@ class Game extends Component {
     }
     // Show the loading indicator if the connection took too long
     this.setState({ loading: true });
-    // Send a request to API (blockchain) to play card with card index
     // And call `loadUser` again for react to render latest game status to UI
     return ApiService.playCard(cardIdx).then(() => {
       return this.loadUser();
@@ -81,7 +78,6 @@ class Game extends Component {
   }
 
   handleNextRound() {
-    // Send a request to API (blockchain) to trigger next round
     // And call `loadUser` again for react to render latest game status to UI
     return ApiService.nextRound().then(() => {
       return this.loadUser();
@@ -89,7 +85,6 @@ class Game extends Component {
   }
 
   handleEndGame() {
-    // Send a request to API (blockchain) to end the game
     // And call `loadUser` again for react to render latest game status to UI
     return ApiService.endGame().then(() => {
       return this.loadUser();

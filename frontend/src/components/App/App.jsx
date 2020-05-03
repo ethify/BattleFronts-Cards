@@ -28,7 +28,6 @@ class App extends Component {
     // Send a request to API (blockchain) to get the current logged in user
     return (
       ApiService.getCurrentUser()
-        // If the server return a username
         .then((username) => {
           // Save the username to redux store
           // For structure, ref: ./frontend/src/reducers/UserReducer.js

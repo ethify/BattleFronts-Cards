@@ -1,7 +1,7 @@
 import { game_status, card_dict, card, game } from "../config";
 import * as _ from "lodash";
 
-import { endGameStakes } from '../services/conditionalTokens/Web3Service';
+import { endGameStakes } from "../services/conditionalTokens/Web3Service";
 
 const EMPTY = 0;
 const FIRE = 1;
@@ -11,7 +11,7 @@ const NEUTRAL = 4;
 const VOID = 5;
 
 export var initailUserGame = {
-  username: "Manank",
+  username: localStorage.getItem("cardgame_account"),
   win_count: 0,
   lost_count: 0,
   game_data: {
@@ -30,7 +30,7 @@ export var initailUserGame = {
 };
 
 export var userGame = {
-  username: "Manank",
+  username: localStorage.getItem("cardgame_account"),
   win_count: 0,
   lost_count: 0,
   game_data: {
@@ -215,11 +215,14 @@ export const nextRound = () => {
 };
 
 export const endGame = async (account) => {
-
   if (userGame.life_player > userGame.life_ai) {
-    await endGameStakes(0, account)
+    await endGameStakes(0, account);
   } else {
-    await endGameStakes(1, account)
+    await endGameStakes(1, account);
   }
   userGame.game_data = _.cloneDeep(initailUserGame.game_data);
+};
+
+export const setUsername = (username) => {
+  userGame.username = username;
 };

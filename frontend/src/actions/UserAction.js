@@ -1,7 +1,14 @@
 import { ActionTypes } from "const";
 
 class UserAction {
-  static setUser({ name, win_count, lost_count, game, staking_done }) {
+  static setUser({
+    name,
+    win_count,
+    lost_count,
+    game,
+    staking_done,
+    staking_amount,
+  }) {
     return {
       type: ActionTypes.SET_USER,
       name, // User name
@@ -9,6 +16,7 @@ class UserAction {
       lost_count, // Users lost count
       game, // Users current Gamestate
       staking_done,
+      staking_amount,
     };
   }
 }
