@@ -31,3 +31,30 @@ https://gitlab.com/ethifylabs/battlefront-cards
 https://gitlab.com/ethifylabs/battlefront-cards
 ## Video Demo
 https://youtu.be/bWf4rQn_-5s
+
+
+## Deployment Instructions - 
+
+1. Clone the Repo
+
+```
+https://gitlab.com/ethifylabs/battlefront-cards
+```
+
+2. Start the frontend server
+
+```
+source .env
+cd frontend/
+npm start
+```
+
+3. Contract Migration and Web3
+
+```
+cd frontend/src/contracts
+ganache-cli -d
+truffle migrate
+```
+
+The Game Frontend will be deployed at `localhost:3000`.
